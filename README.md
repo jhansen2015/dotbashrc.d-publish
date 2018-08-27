@@ -5,10 +5,10 @@ A number of convenient `.bashrc.d` files.
 Clone this repo
 ```
 $ cd ~
-$ git clone https://github.com/jhansen2015/dotbashrc-publish.git .bashrc-publish
+$ git clone https://github.com/jhansen2015/dotbashrc.d-publish.git .bashrc.d-publish
 ...
 
-$ chmod +x .bashrc-publish/*
+$ chmod +x .bashrc.d-publish/{_source_all.sh,*.bashrc}
 
 #
 # Read the .bashrc.d-publish files by adding this code to the end of `.bashrc`.
