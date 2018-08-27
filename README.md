@@ -2,7 +2,7 @@
 
 A number of convenient `.bashrc.d` files.
 
-Clone this repo
+Install:
 ```
 $ cd ~
 $ git clone https://github.com/jhansen2015/dotbashrc.d-publish.git .bashrc.d-publish
