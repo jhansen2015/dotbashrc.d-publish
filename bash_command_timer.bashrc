@@ -113,6 +113,10 @@ function BCTPreCommand() {
 }
 trap 'BCTPreCommand' DEBUG
 
+# COLUMNS is not available by default at login on Cygwin
+# https://stackoverflow.com/a/48016366/3192118
+shopt -s checkwinsize
+
 # Bash will automatically set COLUMNS to the current terminal width.
 export COLUMNS
 
@@ -189,4 +193,5 @@ function BCTPostCommand() {
   # Finally, print output.
   echo -e "${output_str_colored}"
 }
+
 PROMPT_COMMAND='BCTPostCommand'
