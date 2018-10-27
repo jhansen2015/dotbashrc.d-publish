@@ -1,0 +1,6 @@
+dotbashrc-publish
+Copyright 2018 Joshua Hansen
+
+Home page:
+https://github.com/jhansen2015/dotbashrc.d-publish
+
