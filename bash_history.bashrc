@@ -26,9 +26,19 @@ export HISTCONTROL="$HISTCONTROL${HISTCONTROL+:}ignoreboth"
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls -al' # Ignore the ls command as well
 
 # Preserve any existing prompt settings. Allows it to cooperate with bash_command_timer.
-if [[ -n "$PROMPT_COMMAND" ]]
-then
-	PROMPT_COMMAND="$PROMPT_COMMAND; "
+if [[ -n "$PROMPT_COMMAND" ]]; then
+  PROMPT_COMMAND="$PROMPT_COMMAND;"
 fi
+
+# Coordinate with bash-command-timer; don't need to time additional history commands
+if [[ "${PROMPT_COMMAND}" =~ .*BCTPostCommand.* ]]; then
+  PROMPT_COMMAND="${PROMPT_COMMAND} BCT_ENABLE=0;"
+fi
+
 # Whenever displaying the prompt, write the previous line to disk
-export PROMPT_COMMAND="${PROMPT_COMMAND}history -a"
+PROMPT_COMMAND="${PROMPT_COMMAND} history -a; history -n;"
+
+# Coordinate with bash-command-timer
+if [[ "${PROMPT_COMMAND}" =~ .*BCTPostCommand.* ]]; then
+  PROMPT_COMMAND="${PROMPT_COMMAND} BCT_ENABLE=1; BCT_AT_PROMPT=1; "
+fi
