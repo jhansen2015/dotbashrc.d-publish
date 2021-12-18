@@ -15,19 +15,24 @@ function __construct_path_cbe6d98d444d484fa6c2937abc28622d() {
   local L="${BASH_SOURCE[0]}"
 
   # associative arrays are local by default
-  local CYGPATHS
-  local OFS="$IFS"
-  IFS=$'\n' CYGPATHS=( `cygpath "${PATHS[@]}"` );
-  IFS="$OFS"
+  local NEWPATHS=( "${PATHS[@]}" )
+
+  if [[ -e /usr/bin/cygpath ]]
+  then
+    # For speed, convert all paths in a single cygpath call
+    local OFS="$IFS"
+    IFS=$'\n' NEWPATHS=( `cygpath "${PATHS[@]}"` );
+    IFS="$OFS"
+  fi
 
   declare -A EXISTS=()
 
   local p
-  for p in "${CYGPATHS[@]}"
+  for p in "${NEWPATHS[@]}"
   do
     if [[ ! -d "$p" ]]
     then
-      echo "$L: WARNING: Ignoring non-existant path: [$p]" >&2
+      echo "$L: WARNING: Ignoring non-existant path: [$p]"
     elif [[ -v EXISTS["$p"] ]]
     then
       echo "$L: WARNING: Ignoring duplicate path: [$p]"
