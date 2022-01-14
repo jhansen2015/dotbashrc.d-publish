@@ -36,7 +36,7 @@ if [[ "${PROMPT_COMMAND}" =~ .*BCTPostCommand.* ]]; then
 fi
 
 # Whenever displaying the prompt, write the previous line to disk
-PROMPT_COMMAND="${PROMPT_COMMAND} history -a; history -n;"
+PROMPT_COMMAND="${PROMPT_COMMAND} history -a;"
 
 # Coordinate with bash-command-timer
 if [[ "${PROMPT_COMMAND}" =~ .*BCTPostCommand.* ]]; then
