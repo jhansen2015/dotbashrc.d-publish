@@ -1,0 +1,11 @@
+# bind --help
+# bind -f inputrc
+# bind -f ~/.inputrc
+
+# Wipe word in front
+# \e is Esc or Alt
+"\ew": shell-kill-word
+"\C-b": shell-backward-word
+
+"\ek": kill-word
+

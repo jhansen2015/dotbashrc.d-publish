@@ -20,4 +20,6 @@ then
 fi
 ^D
 
+# Use the inputrc
+$ ln -s .bashrc.d-publish/inputrc .inputrc
 ```
