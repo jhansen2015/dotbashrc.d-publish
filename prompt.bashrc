@@ -1,12 +1,12 @@
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+   xterm|xterm-color|*-256color) color_prompt=yes;;
 esac
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\n\$ '
 else
-    PS1='\u@\h:\w\n\$ '
+    PS1='\u@\h \w\n\$ '
 fi
 unset color_prompt force_color_prompt
 
